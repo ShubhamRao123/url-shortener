@@ -54,28 +54,6 @@ router.post("/create", async (req, res) => {
 });
 
 // 📌 2️⃣ Redirect to Original URL
-// router.get("/:shortCode", async (req, res) => {
-//   try {
-//     const { shortCode } = req.params;
-
-//     const link = await ShortLink.findOne({ shortCode });
-
-//     if (!link) {
-//       return res.status(404).json({ message: "Short link not found" });
-//     }
-
-//     if (link.expiresAt && link.expiresAt < new Date()) {
-//       return res.status(410).json({ message: "This link has expired" });
-//     }
-
-//     res.redirect(link.originalUrl);
-//   } catch (error) {
-//     console.error("Error in redirection:", error);
-//     res.status(500).json({ message: "Server error" });
-//   }
-// });
-
-// 📌 2️⃣ Redirect to Original URL
 router.get("/:shortCode", async (req, res) => {
   try {
     const { shortCode } = req.params;
