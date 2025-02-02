@@ -12,6 +12,19 @@ const shortLinkSchema = new mongoose.Schema({
   expiresAt: { type: Date }, // Expiration time (optional)
   remarks: { type: String },
   clicks: { type: Number, default: 0 }, // New field to track clicks
+  responses: [
+    {
+      createdAt: { type: Date, default: Date.now },
+      shortCode: { type: String },
+      shortUrl: { type: String },
+      originalUrl: { type: String },
+      remarks: { type: String },
+      clicks: { type: Number },
+      ipAddress: { type: String },
+      userDevice: { type: String },
+      device: { type: String },
+    },
+  ],
 });
 
 shortLinkSchema.methods.getStatus = function () {
