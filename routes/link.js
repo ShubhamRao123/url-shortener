@@ -76,7 +76,9 @@ router.get("/:shortCode", async (req, res) => {
     link.clicks += 1;
 
     // Get user details (device info, IP, etc.)
-    const ipAddress = req.ip || req.connection.remoteAddress;
+    // const ipAddress = req.ip || req.connection.remoteAddress;
+    const ipAddress =
+      req.headers["x-forwarded-for"] || req.connection.remoteAddress;
     const userDevice = req.headers["user-agent"];
     const deviceType = req.device.type || "Unknown"; // Get device type using express-device
 
